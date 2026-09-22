@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --color-marca: #2f74b7;
+  --color-marca-oscuro: #225a8f;
+  --color-marca-suave: #eaf3fa;
+  --color-fondo: #f5f7fa;
+  --color-borde: #e1e7ee;
+  --color-tinta: #17212b;
+  --color-apagado: #66727c;
+  --color-peligro: #b42318;
+}
+
+@layer base {
+  body {
+    @apply bg-fondo text-tinta;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-marca;
+  }
+}
+
+/* Componentes reutilizables (en v4 se declaran como utilidades para poder combinarlos). */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium whitespace-nowrap transition-colors disabled:pointer-events-none disabled:opacity-50;
+}
+
+@utility btn-primario {
+  @apply btn bg-marca text-white hover:bg-marca-oscuro;
+}
+
+@utility btn-secundario {
+  @apply btn border border-borde bg-white text-tinta hover:bg-fondo;
+}
+
+@utility btn-fantasma {
+  @apply btn text-apagado hover:bg-fondo hover:text-tinta;
+}
+
+@utility btn-peligro {
+  @apply btn border border-red-200 bg-white text-peligro hover:bg-red-50;
+}
+
+@utility campo {
+  @apply block w-full rounded-lg border border-borde bg-white px-3 py-2 text-[15px] text-tinta placeholder:text-slate-400 focus:border-marca focus:ring-2 focus:ring-marca/20 focus:outline-none;
+}
+
+@utility rotulo {
+  @apply mb-1 block text-xs font-semibold tracking-wide text-apagado uppercase;
+}
+
+@utility tarjeta {
+  @apply rounded-xl border border-borde bg-white;
+}
