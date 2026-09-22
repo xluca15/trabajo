@@ -49,7 +49,7 @@ export default async function PaginaCliente({ params, searchParams }: PageProps<
 
   return (
     <div className="space-y-6">
-      <Link href="/clientes" className="inline-flex items-center gap-1 text-sm text-apagado hover:text-tinta">
+      <Link href="/clientes" className="-my-2 inline-flex items-center gap-1 py-2 text-sm text-apagado hover:text-tinta">
         <ArrowLeft className="size-4" /> Clientes
       </Link>
 
@@ -65,8 +65,8 @@ export default async function PaginaCliente({ params, searchParams }: PageProps<
         </Link>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-        <div className="space-y-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="min-w-0 space-y-6">
           <section className="tarjeta p-4 sm:p-5">
             <h2 className="mb-3 text-sm font-semibold">Nuevo documento</h2>
             <div className="grid gap-2 sm:grid-cols-3">
@@ -86,7 +86,7 @@ export default async function PaginaCliente({ params, searchParams }: PageProps<
                 href={`/clientes/${id}`}
                 role="tab"
                 aria-selected={!tipoFiltro}
-                className={`rounded-full px-3 py-1 text-sm ${!tipoFiltro ? "bg-tinta text-white" : "bg-white text-apagado ring-1 ring-borde hover:text-tinta"}`}
+                className={`rounded-full px-3 py-1.5 text-sm ${!tipoFiltro ? "bg-tinta text-white" : "bg-white text-apagado ring-1 ring-borde hover:text-tinta"}`}
               >
                 Todos ({todos.length})
               </Link>
@@ -96,7 +96,7 @@ export default async function PaginaCliente({ params, searchParams }: PageProps<
                   href={`/clientes/${id}?tipo=${t}`}
                   role="tab"
                   aria-selected={tipoFiltro === t}
-                  className={`rounded-full px-3 py-1 text-sm ${tipoFiltro === t ? "bg-tinta text-white" : "bg-white text-apagado ring-1 ring-borde hover:text-tinta"}`}
+                  className={`rounded-full px-3 py-1.5 text-sm ${tipoFiltro === t ? "bg-tinta text-white" : "bg-white text-apagado ring-1 ring-borde hover:text-tinta"}`}
                 >
                   {NOMBRE_TIPO_PLURAL[t]} ({cuenta(t)})
                 </Link>
@@ -181,14 +181,14 @@ export default async function PaginaCliente({ params, searchParams }: PageProps<
               <Paperclip className="size-4" /> Archivos
             </h2>
             {sueltos.length > 0 && (
-              <ul className="mb-4 space-y-2">
+              <ul className="mb-4 space-y-0.5">
                 {sueltos.map((a) => (
                   <li key={a.id} className="flex items-center gap-2 text-sm">
-                    <a href={`/api/archivos/${a.id}`} target="_blank" className="min-w-0 flex-1 truncate text-marca hover:underline">
+                    <a href={`/api/archivos/${a.id}`} target="_blank" className="min-w-0 flex-1 truncate py-2 text-marca hover:underline">
                       {a.nombre}
                     </a>
                     <span className="shrink-0 text-xs text-apagado">{tamanoLegible(a.tamano)}</span>
-                    <BotonConfirmar accion={eliminarArchivo.bind(null, a.id)} className="btn-fantasma px-1.5 text-xs" pregunta="¿Borrar?" confirmar="Borrar">
+                    <BotonConfirmar accion={eliminarArchivo.bind(null, a.id)} className="btn-fantasma px-3 sm:px-1.5 sm:text-xs" pregunta="¿Borrar?" confirmar="Borrar">
                       ✕<span className="sr-only">Borrar {a.nombre}</span>
                     </BotonConfirmar>
                   </li>

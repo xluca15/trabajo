@@ -60,6 +60,13 @@ pnpm dev
 Los usuarios y las migraciones se manejan desde la PC, con `.env.local` apuntando a Neon:
 `pnpm usuario:crear …` y, si cambia el esquema, `pnpm db:migrate`.
 
+## En el celular
+
+- **Instalarla**: abrirla en el navegador del celular y elegir *Agregar a la pantalla de inicio* (en iPhone, desde Compartir en Safari). Abre a pantalla completa, como una app.
+- **Compartir PDFs**: en el editor, *Compartir* manda el PDF directo por WhatsApp, mail, etc. Necesita HTTPS, así que anda en Vercel y no en `http://192.168…`.
+- **Fotos**: en la ficha del cliente, *Sacar foto* abre la cámara. Las fotos se achican solas antes de subirse (una de 8 MB queda en ~700 KB).
+- **Probar en desarrollo**: con `pnpm dev` corriendo, entrar desde el celular (en el mismo wifi) a `http://<IP de la PC>:3000`. `pnpm dev` muestra la IP en la línea *Network*. Las IPs locales ya están habilitadas para el login.
+
 ## Scripts
 
 | Comando | Qué hace |

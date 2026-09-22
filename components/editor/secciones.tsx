@@ -137,7 +137,7 @@ export function SeccionPresupuesto({
               />
               <button
                 type="button"
-                className="btn-fantasma px-2"
+                className="btn-fantasma px-3 sm:px-2"
                 onClick={() => cambiar({ condicionesPago: contenido.condicionesPago.filter((_, j) => j !== i) })}
                 title="Quitar"
               >
@@ -183,7 +183,7 @@ function TextosFrecuentes({
           <Search className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-apagado" />
           <input
             type="search"
-            className="campo py-1.5 pl-8 text-sm"
+            className="campo py-1.5 pl-8 sm:text-sm"
             placeholder="Filtrar…"
             value={filtro}
             onChange={(e) => setFiltro(e.target.value)}

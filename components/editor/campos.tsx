@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowDown, ArrowUp, X } from "lucide-react";
-import { useId, useState, type ReactNode, type TextareaHTMLAttributes } from "react";
+import { useId, useLayoutEffect, useRef, useState, type ReactNode, type TextareaHTMLAttributes } from "react";
 
 export function Campo({
   rotulo,
@@ -26,9 +26,16 @@ export function Campo({
   );
 }
 
-/** Textarea que crece con el contenido. */
+/** Textarea que crece con el contenido (con CSS donde se puede; en Safari, ajustando el alto a mano). */
 export function AreaTexto({ className = "", ...props }: TextareaHTMLAttributes<HTMLTextAreaElement>) {
-  return <textarea rows={2} {...props} className={`campo field-sizing-content min-h-16 resize-y ${className}`} />;
+  const ref = useRef<HTMLTextAreaElement>(null);
+  useLayoutEffect(() => {
+    const area = ref.current;
+    if (!area || CSS.supports("field-sizing", "content")) return;
+    area.style.height = "auto";
+    area.style.height = `${area.scrollHeight + 2}px`;
+  }, [props.value]);
+  return <textarea ref={ref} rows={2} {...props} className={`campo field-sizing-content min-h-16 resize-y ${className}`} />;
 }
 
 const numero = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
@@ -98,34 +105,34 @@ export function ControlesFila({
   etiqueta: string;
 }) {
   return (
-    <div className="flex shrink-0 flex-col gap-0.5">
+    <div className="-mr-1 flex shrink-0 flex-col sm:mr-0 sm:gap-0.5">
       <button
         type="button"
-        className="rounded p-1 text-apagado hover:bg-fondo hover:text-tinta disabled:opacity-30"
+        className="rounded-md p-2 text-apagado hover:bg-fondo hover:text-tinta disabled:opacity-30 sm:p-1"
         disabled={indice === 0}
         onClick={() => onMover(indice, indice - 1)}
         title="Subir"
       >
-        <ArrowUp className="size-3.5" />
+        <ArrowUp className="size-5 sm:size-3.5" />
         <span className="sr-only">Subir {etiqueta}</span>
       </button>
       <button
         type="button"
-        className="rounded p-1 text-apagado hover:bg-fondo hover:text-tinta disabled:opacity-30"
+        className="rounded-md p-2 text-apagado hover:bg-fondo hover:text-tinta disabled:opacity-30 sm:p-1"
         disabled={indice === total - 1}
         onClick={() => onMover(indice, indice + 1)}
         title="Bajar"
       >
-        <ArrowDown className="size-3.5" />
+        <ArrowDown className="size-5 sm:size-3.5" />
         <span className="sr-only">Bajar {etiqueta}</span>
       </button>
       <button
         type="button"
-        className="rounded p-1 text-apagado hover:bg-red-50 hover:text-peligro"
+        className="rounded-md p-2 text-apagado hover:bg-red-50 hover:text-peligro sm:p-1"
         onClick={() => onBorrar(indice)}
         title="Quitar"
       >
-        <X className="size-3.5" />
+        <X className="size-5 sm:size-3.5" />
         <span className="sr-only">Quitar {etiqueta}</span>
       </button>
     </div>

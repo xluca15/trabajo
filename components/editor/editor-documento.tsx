@@ -172,7 +172,7 @@ export function EditorDocumento({
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
-          <Link href={`/clientes/${cliente.id}`} className="text-sm text-apagado hover:text-tinta">
+          <Link href={`/clientes/${cliente.id}`} className="-my-2 inline-block py-2 text-sm text-apagado hover:text-tinta">
             ← {cliente.nombre}
           </Link>
           <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
@@ -226,7 +226,7 @@ export function EditorDocumento({
         ))}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div className={`space-y-4 ${pestana === "editar" ? "" : "hidden lg:block"}`}>
           <section className="tarjeta grid gap-3 p-4 sm:grid-cols-2 sm:p-5">
             <Campo rotulo="Número">

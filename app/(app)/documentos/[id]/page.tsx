@@ -28,7 +28,7 @@ export default async function PaginaDocumento({ params }: PageProps<"/documentos
       <div className="space-y-4">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <Link href={`/clientes/${cliente.id}`} className="text-sm text-apagado hover:text-tinta">
+            <Link href={`/clientes/${cliente.id}`} className="-my-2 inline-block py-2 text-sm text-apagado hover:text-tinta">
               ← {cliente.nombre}
             </Link>
             <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
@@ -62,7 +62,7 @@ export default async function PaginaDocumento({ params }: PageProps<"/documentos
           <ul className="flex flex-wrap gap-3 text-sm">
             {adjuntos.map((a) => (
               <li key={a.id}>
-                <a href={`/api/archivos/${a.id}?descargar`} className="inline-flex items-center gap-1 text-marca hover:underline">
+                <a href={`/api/archivos/${a.id}?descargar`} className="inline-flex items-center gap-1 py-2 text-marca hover:underline">
                   <FileText className="size-4" /> {a.nombre}
                 </a>
               </li>

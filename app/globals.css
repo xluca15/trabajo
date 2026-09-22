@@ -43,7 +43,7 @@
 }
 
 @utility campo {
-  @apply block w-full rounded-lg border border-borde bg-white px-3 py-2 text-[15px] text-tinta placeholder:text-slate-400 focus:border-marca focus:ring-2 focus:ring-marca/20 focus:outline-none;
+  @apply block w-full rounded-lg border border-borde bg-white px-3 py-2 text-base text-tinta sm:text-[15px] placeholder:text-slate-400 focus:border-marca focus:ring-2 focus:ring-marca/20 focus:outline-none;
 }
 
 @utility rotulo {

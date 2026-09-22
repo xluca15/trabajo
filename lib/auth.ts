@@ -3,6 +3,7 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { db, schema } from "./db";
+import { ipsLocales } from "./red-local";
 
 /**
  * URL pública de la app. En Vercel no hace falta configurarla: se toma el dominio de producción
@@ -19,6 +20,11 @@ function urlBase() {
 
 export const auth = betterAuth({
   baseURL: urlBase(),
+  // En desarrollo también se puede entrar desde el celular por wifi, con la IP de la PC.
+  trustedOrigins:
+    process.env.NODE_ENV === "development"
+      ? ipsLocales().map((ip) => `http://${ip}:${process.env.PORT ?? 3000}`)
+      : [],
   database: drizzleAdapter(db, { provider: "pg", schema }),
   emailAndPassword: {
     enabled: true,

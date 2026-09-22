@@ -16,7 +16,7 @@ export default async function PaginaInicio() {
 
   return (
     <div className="space-y-8">
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <form action={crearDocumentoRapido} className="tarjeta space-y-3 p-5">
           <h2 className="font-semibold">Nuevo documento</h2>
           <div className="grid gap-2 sm:grid-cols-[1fr_auto]">
@@ -37,7 +37,7 @@ export default async function PaginaInicio() {
             </select>
           </div>
           <div className="flex items-center justify-between gap-2">
-            <Link href="/clientes/nuevo" className="text-sm text-marca hover:underline">
+            <Link href="/clientes/nuevo" className="-my-2 py-2 text-sm text-marca hover:underline">
               + Cliente nuevo
             </Link>
             <button type="submit" className="btn-primario">
